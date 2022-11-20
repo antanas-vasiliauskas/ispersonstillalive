@@ -9,12 +9,15 @@ h1 {
   font-weight: bold;
   margin: 20px; }
 
-@media (max-width: 499px) {
-  #intro::before {
-    content: "Code Army is an online community where developers share knowledge and grow their careers. Join Code Army now! "; } }
-@media (min-width: 500px) {
-  #intro::before {
-    content: "Code Army is an online community where developers share knowledge and grow their careers. Developers from around the world can particapate in discussions on Code Army. You can write and read stories, ask open-ended questions as well as technical questions, start polls. We also provide wide variety of programming courses to help you learn and reach career heights. Join Code Army now!"; } }
+.status-deceased{
+  color: red;
+}
+
+.status-alive{
+  color: green;
+}
+
+
 #intro {
   font-weight: bold;
   margin-left: 10%;
@@ -28,7 +31,12 @@ h1 {
   justify-content: center;
   text-align: center;
   color: white;
-  background-image: url("../images/image0.png");
+  background-image: 
+      /* top, transparent red */
+      linear-gradient(
+        rgba(0, 0, 0, 0.6), 
+        rgba(0, 0, 0, 0.6)
+      ),url("../images/queen.webp");
   background-position: center; }
 
 .form {
