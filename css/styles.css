@@ -43,6 +43,38 @@ margin-right: 20px; }
       ),url("../images/queen.webp");
   background-position: center; }
 
+  #imgbackground2 {
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-image: 
+        /* top, transparent red */
+        linear-gradient(
+          rgba(0, 0, 0, 0.6), 
+          rgba(0, 0, 0, 0.6)
+        ),url("../images/kennedy.png");
+    background-position: center; }
+
+    #imgbackground3 {
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background-image: 
+          /* top, transparent red */
+          linear-gradient(
+            rgba(0, 0, 0, 0.6), 
+            rgba(0, 0, 0, 0.6)
+          ),url("../images/kobe.png");
+      background-position: center; }
+
   #noimgbackground {
     padding: 20px;
     height: 100vh;
