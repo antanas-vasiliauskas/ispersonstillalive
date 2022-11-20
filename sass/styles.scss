@@ -1,0 +1,191 @@
+// --------------------------------------- variables ---------------------------------------
+$background-color: rgb(208, 214, 220);
+
+
+
+
+
+// --------------------------------------- general ---------------------------------------
+@media (max-width: 499px){
+	#registerbutton {
+		display: none;
+	}
+}
+
+body{
+	background:$background-color;
+}
+
+h1{
+	text-align: center;
+	font-weight: bold;
+	margin: 20px;
+}
+
+
+// --------------------------------------- home.html ---------------------------------------
+@media (max-width: 499px){
+	#intro::before{
+		content: "Code Army is an online community where developers share knowledge and grow their careers. Join Code Army now! ";
+	}
+}
+
+@media (min-width: 500px){
+	#intro::before{
+		content: "Code Army is an online community where developers share knowledge and grow their careers. Developers from around the world can particapate in discussions on Code Army. You can write and read stories, ask open-ended questions as well as technical questions, start polls. We also provide wide variety of programming courses to help you learn and reach career heights. Join Code Army now!";
+	}
+}
+
+#intro{
+	font-weight: bold;
+	margin-left: 10%;
+	margin-right: 10%;
+} 
+
+#imgbackground{
+	padding: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	text-align:center;
+	color: white;
+
+	background-image: url("../images/image0.png");
+	background-position:center;
+}
+
+
+
+// --------------------------------------- login.html and register.html ---------------------------------------
+.form{
+	margin: 100px;
+}
+
+
+// --------------------------------------- discussions.html ---------------------------------------
+@media (max-width: 992px){
+	#optionsmenu{
+		display: none;
+	}
+}
+
+#optionsmenu{
+	margin: 20px;
+	font-size: 14px;
+
+	div{
+		background:rgb(240,220,161);
+		border-radius: 5px;
+		padding: 20px;
+
+		h6{
+			text-align: center;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+
+
+#postcontainer{
+	margin: 20px;
+
+	a{
+		color: rgb(33, 37, 41);
+		text-decoration: none;
+	}
+}
+
+.post > div{
+	background: white;
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.post > div:hover{
+	background: rgb(240,240,240);
+}
+
+.post > div > h5{
+	font-weight: bold;
+}
+
+.post > div > div{
+	font-size: 11px;
+	 color: grey;
+}
+
+
+// --------------------------------------- courses.html ---------------------------------------
+#coursetable{
+	background:white;
+}
+
+
+%table-row{
+	th,td{
+		padding: 15px;
+		a{
+			text-decoration: none;
+		}
+	}
+	td:hover, th:hover{
+		background:rgb(240,240,240);
+	}
+}
+
+.redrow{
+	@extend %table-row;
+	a{
+		color: red;
+	}
+}
+
+.bluerow{
+	@extend %table-row;
+	a{
+		color: blue;
+	}
+}
+
+.greenrow{
+	@extend %table-row;
+	a{
+		color:  green;
+	}
+}
+
+.blackrow{
+	@extend %table-row;
+	a{
+		color: black;
+	}
+}
+
+table{
+	border: 1px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+// --------------------------------------- articles.html ---------------------------------------
+.article{
+	width: 320px;
+	font-weight: bold;
+	font-size: 16px;
+	margin: 20px;
+}
+
+.articleimage{
+	width: 320px;
+}
+
+.wrapper{
+	display: flex;
+	flex-wrap: wrap;
+}
