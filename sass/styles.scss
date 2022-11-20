@@ -56,6 +56,20 @@ h1{
 	background-position:center;
 }
 
+#noimgbackground{
+	padding: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	text-align:center;
+	color: white;
+
+	background-image: url("../images/image0.png");
+	background-position:center;
+}
+
 
 
 // --------------------------------------- login.html and register.html ---------------------------------------
