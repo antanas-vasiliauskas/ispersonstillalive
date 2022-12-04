@@ -16,7 +16,7 @@ void add_cookies_popup(char *file_path){
     fseek(html_file, 0L, SEEK_END);
     int len = ftell(html_file);
     fseek(html_file, 0L, SEEK_SET);
-    char *str = (char*) malloc(sizeof(char)*len);
+    char *str = (char*) calloc(len+1,sizeof(char));
     fread(str, 1, len, html_file);
     if(strstr(str, "cookies-eu-banner") != NULL){
         printf("Accept cookies pop-up already exists.\n");
