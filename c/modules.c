@@ -24,7 +24,7 @@ void add_cookies_popup(char *file_path){
         return;
     }
 
-    if(strstr(str, "<body>") == NULL){
+    if(strstr(str, "<body") == NULL){
         printf("There is no body tag in html file.\n");
         free(str);
         return;
@@ -131,7 +131,10 @@ void add_cookies_popup(char *file_path){
 		"\n"
 		"\n";
 
-    char *str3 = strstr(str, "<body>") + 6;
+    char *str3 = strstr(str, "<body") + 5;
+    for(int i = 0; i < 1000; i++){
+        if(*(str3++) == '>') break;
+    }
     fclose(html_file);
     html_file = fopen(file_path, "w");
     fwrite(str, 1, str3 - str, html_file);
