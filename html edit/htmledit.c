@@ -4,10 +4,19 @@
 
 #define spec '|'
 
-void htmlEdit(FILE *file, char strings[][100]){
-    int flength, loopDepth = 0, tempLength, replaceNr = 0;
+void htmlEdit(FILE *file, FILE *db);
+
+int main(){
+    FILE *fp1 = fopen("test.html", "r+");
+    FILE *fp2 = fopen("db.txt", "r");
+    htmlEdit(fp1, fp2);
+    return 0;
+}
+
+void htmlEdit(FILE *file, FILE *db){
+    int flength, loopDepth = 0, tempLength;
     int repNum[10];
-    char copy[1000], replace[1000];
+    char copy[1000], replace[1000], fromDatabase[1000];
     char *tempName = malloc(10);
     char *loop;
     strcpy(tempName, "t0.txt");
@@ -55,10 +64,10 @@ void htmlEdit(FILE *file, char strings[][100]){
     while(ftell(temps[0]) < flength){
         fgets(copy, 1000, temps[0]);
         while(strchr(copy, spec) != NULL){
+            fgets(fromDatabase, 1000, db);
             strcpy(replace, strchr(copy, spec) + 1);
             *strchr(copy, spec) = '\0';
-            strcat(copy, strings[replaceNr]);
-            ++replaceNr;
+            strcat(copy, fromDatabase);
             strcat(copy, replace);
         }
         fputs(copy, file);
