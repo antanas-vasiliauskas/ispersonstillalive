@@ -2,9 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void add_cookies_popup(char *html_file_path);
-//void add_tooltip(char *html_file_path, char *element_id, char *tooltip_text);
-void change_cursor(char *html_file_path);
+#define spec '|'
 
 
 // Adds "Accept cookies" pop-up dialog to your html page if one doesn't exist already.
@@ -164,7 +162,7 @@ void add_tooltip(char *html_file_path, char *element_id, char *tooltip_text){
         return;
     }
 
-    
+
 
     char *str2 = strstr(str, ".tooltip-wrapper") != NULL ? "" :
         "\n"
@@ -181,7 +179,7 @@ void add_tooltip(char *html_file_path, char *element_id, char *tooltip_text){
         "border-radius: 4px;\n"
         "display: block;\n"
         "background: #444;\n"
-        "color: #fff;\n"	
+        "color: #fff;\n"
         "opacity: 0;\n"
         "pointer-events: none;\n"
         "position: absolute;\n"
@@ -207,7 +205,7 @@ void add_tooltip(char *html_file_path, char *element_id, char *tooltip_text){
         "padding: 20px;\n"
         "margin: auto;\n"
         "margin-bottom: 15px;\n"
-        "\n"	
+        "\n"
         "}\n"
         "\n"
         ".tooltip-wrapper .tooltip:before {\n"
@@ -295,8 +293,8 @@ void add_tooltip(char *html_file_path, char *element_id, char *tooltip_text){
         printf("%c%c%c%c%c%c\n", *str_new_0, *(str_new_0+1), *(str_new_0+2), *(str_new_0+3), *(str_new_0+4), *(str_new_0+5));
     }
     }
-    
-    
+
+
 
     if(class_start == NULL){
 
@@ -309,7 +307,7 @@ void add_tooltip(char *html_file_path, char *element_id, char *tooltip_text){
         }
         char *second_marker = first_marker; // add "<span class="tooltip">%s</span>" without quotation marks
         for(int i = 0; i < 1000; i++){
-            if(*(second_marker++) == '>') break; 
+            if(*(second_marker++) == '>') break;
         }
         fclose(html_file);
         html_file = fopen(html_file_path, "w");
@@ -375,5 +373,68 @@ void change_cursor(char *html_file_path){
     fwrite(str2, 1, strlen(str2), html_file);
     fwrite(str3, 1, strlen(str3), html_file);
     printf("Cursor for you website was changed.\n");
+}
+
+void htmlEdit(FILE *file, FILE *db){
+    int flength, loopDepth = 0, tempLength;
+    int repNum[10];
+    char copy[1000], replace[1000], fromDatabase[1000];
+    char *tempName = malloc(10);
+    char *loop;
+    strcpy(tempName, "t0.txt");
+    FILE **temps = malloc(10 * sizeof(FILE*));
+    temps[0] = fopen(tempName, "w+");
+    fseek(file, 0, SEEK_END);
+    flength = ftell(file);
+    fseek(file, 0, SEEK_SET);
+    while(ftell(file) < flength){
+        fgets(copy, 1000, file);
+        loop = strstr(copy, "(repeat) ");
+        if(loop == NULL){
+            loop = strstr(copy, "(endrep)\n");
+            if(loop == NULL){
+                fputs(copy, temps[loopDepth]);
+            }
+            else{
+                tempLength = ftell(temps[loopDepth]);
+                for(int i = 0; i < repNum[loopDepth]; ++i){
+                    tempLength = ftell(temps[loopDepth]);
+                    fseek(temps[loopDepth], 0, SEEK_SET);
+                    while(ftell(temps[loopDepth]) < tempLength){
+                        fgets(copy, 1000, temps[loopDepth]);
+                        fputs(copy, temps[loopDepth - 1]);
+                    }
+                }
+                fclose(temps[loopDepth]);
+                sprintf(tempName, "t%d.txt", loopDepth);
+                remove(tempName);
+                --loopDepth;
+            }
+        }
+        else{
+            ++loopDepth;
+            repNum[loopDepth] = atoi(loop + 9);
+            sprintf(tempName, "t%d.txt", loopDepth);
+            temps[loopDepth] = fopen(tempName, "w+");
+        }
+    }
+    //---------------------------------------------------------------------
+    fseek(file, 0, SEEK_SET);
+    fseek(temps[0], 0, SEEK_END);
+    flength = ftell(temps[0]);
+    fseek(temps[0], 0, SEEK_SET);
+    while(ftell(temps[0]) < flength){
+        fgets(copy, 1000, temps[0]);
+        while(strchr(copy, spec) != NULL){
+            fgets(fromDatabase, 1000, db);
+            strcpy(replace, strchr(copy, spec) + 1);
+            *strchr(copy, spec) = '\0';
+            strcat(copy, fromDatabase);
+            strcat(copy, replace);
+        }
+        fputs(copy, file);
+    }
+    fclose(temps[0]);
+    remove("t0.txt");
 }
 

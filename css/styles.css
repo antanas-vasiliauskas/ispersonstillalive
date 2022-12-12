@@ -17,11 +17,11 @@ margin-right: 20px; }
 
 
 .status-deceased{
-  color: red;
+  color: lightcoral;
 }
 
 .status-alive{
-  color: green;
+  color: lightgreen;
 }
 
 a:link{
@@ -32,7 +32,7 @@ a:link{
   margin-left: 10%;
   margin-right: 10%; }
 
-#imgbackground {
+.imgbackground {
   padding: 20px;
   height: 100vh;
   display: flex;
@@ -40,61 +40,7 @@ a:link{
   justify-content: center;
   text-align: center;
   color: white;
-  background-image: 
-      /* top, transparent red */
-      linear-gradient(
-        rgba(0, 0, 0, 0.6), 
-        rgba(0, 0, 0, 0.6)
-      ),url("../images/queen.webp");
   background-position: center; }
-
-  #imgbackground2 {
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    background-image: 
-        /* top, transparent red */
-        linear-gradient(
-          rgba(0, 0, 0, 0.6), 
-          rgba(0, 0, 0, 0.6)
-        ),url("../images/kennedy.png");
-    background-position: center; }
-
-    #imgbackground3 {
-      padding: 20px;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      background-image: 
-          /* top, transparent red */
-          linear-gradient(
-            rgba(0, 0, 0, 0.6), 
-            rgba(0, 0, 0, 0.6)
-          ),url("../images/kobe.png");
-      background-position: center; }
-
-  #noimgbackground {
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    background-image: 
-        /* top, transparent red */
-        linear-gradient(
-          rgba(0, 0, 0, 0.6), 
-          rgba(0, 0, 0, 0.6)
-        );
-    background-position: center; }
 
 .form {
   margin: 100px; }
