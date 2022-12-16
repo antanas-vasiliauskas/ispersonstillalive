@@ -141,6 +141,7 @@ void add_cookies_popup(char *html_file_path){
     fwrite(str2, 1, strlen(str2), html_file);
     fwrite(str3, 1, strlen(str3), html_file);
     printf("Accept cookies pop-up added to your html file.");
+    fclose(htm_file);
 }
 
 /* Kolkas gryba pjauna
@@ -373,6 +374,7 @@ void change_cursor(char *html_file_path){
     fwrite(str2, 1, strlen(str2), html_file);
     fwrite(str3, 1, strlen(str3), html_file);
     printf("Cursor for you website was changed.\n");
+    fclose(htm_file);
 }
 
 void htmlEdit(FILE *file, FILE *db){
