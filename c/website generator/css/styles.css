@@ -1,0 +1,125 @@
+@media (max-width: 499px) {
+  #registerbutton {
+    display: none; } }
+body {
+  background: #d0d6dc; }
+
+
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+
+margin-top: 0px;
+margin-bottom: 20px;
+margin-left: 20px;
+margin-right: 20px; }
+
+
+.status-deceased{
+  color: lightcoral;
+}
+
+.status-alive{
+  color: lightgreen;
+}
+
+a:link{
+  color: rgb(110, 209, 222);
+}
+
+.basic-text {
+  margin-left: 10%;
+  margin-right: 10%; }
+
+.imgbackground {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-position: center; }
+
+.form {
+  margin: 100px; }
+
+@media (max-width: 992px) {
+  #optionsmenu {
+    display: none; } }
+#optionsmenu {
+  margin: 20px;
+  font-size: 14px; }
+  #optionsmenu div {
+    background: #f0dca1;
+    border-radius: 5px;
+    padding: 20px; }
+    #optionsmenu div h6 {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px; }
+
+#postcontainer {
+  margin: 20px; }
+  #postcontainer a {
+    color: #212529;
+    text-decoration: none; }
+
+.post > div {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px; }
+
+.post > div:hover {
+  background: #f0f0f0; }
+
+.post > div > h5 {
+  font-weight: bold; }
+
+.post > div > div {
+  font-size: 11px;
+  color: grey; }
+
+#coursetable {
+  background: white; }
+
+.redrow th, .bluerow th, .greenrow th, .blackrow th, .redrow td, .bluerow td, .greenrow td, .blackrow td {
+  padding: 15px; }
+  .redrow th a, .bluerow th a, .greenrow th a, .blackrow th a, .redrow td a, .bluerow td a, .greenrow td a, .blackrow td a {
+    text-decoration: none; }
+.redrow td:hover, .bluerow td:hover, .greenrow td:hover, .blackrow td:hover, .redrow th:hover, .bluerow th:hover, .greenrow th:hover, .blackrow th:hover {
+  background: #f0f0f0; }
+
+.redrow a {
+  color: red; }
+
+.bluerow a {
+  color: blue; }
+
+.greenrow a {
+  color: green; }
+
+.blackrow a {
+  color: black; }
+
+table {
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto; }
+
+.article {
+  width: 320px;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 20px; }
+
+.articleimage {
+  width: 320px; }
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap; }
+
+/*# sourceMappingURL=styles.css.map */
