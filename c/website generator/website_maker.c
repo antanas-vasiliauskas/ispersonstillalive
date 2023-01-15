@@ -20,8 +20,8 @@ int main(){
     htmlEdit(js, db2);
     fclose(js);
 
-    change_cursor("./index.html");
-    add_cookies_popup("./index.html");
+    change_cursor("../../index.html");
+    add_cookies_popup("../../javascript/counter.js");
     return 0;
 }
 void create1(int numb){
