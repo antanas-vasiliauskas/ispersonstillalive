@@ -140,7 +140,7 @@ void add_cookies_popup(char *html_file_path){
     fwrite(str, 1, str3 - str, html_file);
     fwrite(str2, 1, strlen(str2), html_file);
     fwrite(str3, 1, strlen(str3), html_file);
-    printf("Accept cookies pop-up added to your html file.");
+    printf("Accept cookies pop-up added to your html file.\n");
     fclose(html_file);
 }
 
