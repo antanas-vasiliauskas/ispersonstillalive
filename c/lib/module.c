@@ -386,23 +386,24 @@ void htmlEdit(FILE *file, FILE *db){
     strcpy(tempName, "t0.txt");
     FILE **temps = malloc(10 * sizeof(FILE*));
     temps[0] = fopen(tempName, "w+");
-    fseek(file, 0, SEEK_END);
-    flength = ftell(file);
+    fseeko64(file, 0, SEEK_END);
+    fseeko64(file, 0, SEEK_END);
+    flength = (int) ftello64(file);
     fseek(file, 0, SEEK_SET);
-    while(ftell(file) < flength){
+    while(ftello64(file) < flength){
         fgets(copy, 1000, file);
         loop = strstr(copy, "(repeat) ");
         if(loop == NULL){
-            loop = strstr(copy, "(endrep)\n");
+            loop = strstr(copy, "(endrep)");
             if(loop == NULL){
                 fputs(copy, temps[loopDepth]);
             }
             else{
-                tempLength = ftell(temps[loopDepth]);
+                tempLength = ftello64(temps[loopDepth]);
                 for(int i = 0; i < repNum[loopDepth]; ++i){
-                    tempLength = ftell(temps[loopDepth]);
-                    fseek(temps[loopDepth], 0, SEEK_SET);
-                    while(ftell(temps[loopDepth]) < tempLength){
+                    tempLength = ftello64(temps[loopDepth]);
+                    fseeko64(temps[loopDepth], 0, SEEK_SET);
+                    while(ftello64(temps[loopDepth]) < tempLength){
                         fgets(copy, 1000, temps[loopDepth]);
                         fputs(copy, temps[loopDepth - 1]);
                     }
@@ -421,14 +422,15 @@ void htmlEdit(FILE *file, FILE *db){
         }
     }
     //---------------------------------------------------------------------
-    fseek(file, 0, SEEK_SET);
-    fseek(temps[0], 0, SEEK_END);
-    flength = ftell(temps[0]);
-    fseek(temps[0], 0, SEEK_SET);
-    while(ftell(temps[0]) < flength){
+    fseeko64(file, 0, SEEK_SET);
+    fseeko64(temps[0], 0, SEEK_END);
+    flength = ftello64(temps[0]);
+    fseeko64(temps[0], 0, SEEK_SET);
+    while(ftello64(temps[0]) < flength){
         fgets(copy, 1000, temps[0]);
         while(strchr(copy, spec) != NULL){
             fgets(fromDatabase, 1000, db);
+            if(strrchr(fromDatabase, '\n') != NULL) *strrchr(fromDatabase, '\n') = '\0';
             strcpy(replace, strchr(copy, spec) + 1);
             *strchr(copy, spec) = '\0';
             strcat(copy, fromDatabase);
