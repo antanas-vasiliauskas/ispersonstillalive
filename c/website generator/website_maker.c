@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "module.h"
+#include "../lib/module.h"
 
 void create1(int numb);
 void create2(int numb);
@@ -12,12 +12,12 @@ int main(){
     fgets(num_string, 10, db1);
     numb = atoi(num_string);
     create1(numb);
-    main_file = fopen("index.html", "r+");
-    //htmlEdit(main_file, db1);
-    create2(numb);
-    js = fopen("./javascript/counter.js", "r+");
-    //htmlEdit(js, db2);
+    main_file = fopen("../../index.html", "r+");
+    htmlEdit(main_file, db1);
     fclose(main_file);
+    create2(numb);
+    js = fopen("../../javascript/counter.js", "r+");
+    htmlEdit(js, db2);
     fclose(js);
 
     change_cursor("./index.html");
@@ -25,7 +25,7 @@ int main(){
     return 0;
 }
 void create1(int numb){
-    FILE *fp = fopen("index.html", "w");
+    FILE *fp = fopen("../../index.html", "w");
     char *str = "<!DOCTYPE html>\n"
                 "<html>\n"
                 "\n"
@@ -160,7 +160,7 @@ void create1(int numb){
     fclose(fp);
 }
 void create2(int numb){
-    FILE *fp = fopen("./javascript/counter.js", "w");
+    FILE *fp = fopen("../../javascript/counter.js", "w");
     char *str = "// Set the date we're counting down to\n"
                 "var countDown = [\n"
                 "(repeat) %d\n"
